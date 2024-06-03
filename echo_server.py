@@ -13,7 +13,7 @@ async def echo_server_proto(scope: Dict, conn: EchoQuicConnection):
 ########################################## Download ####################################################
         if dgram_in.mtype == pdu.MSG_TYPE_FILE:
 
-            file_path = os.path.join('/Users/subhratosom/Desktop/python/serverdata', dgram_in.msg) #Change it to '/yourfilepath/serverdata'
+            file_path = os.path.join('/yourfilepath/serverdata', dgram_in.msg) #Change it to '/yourfilepath/serverdata'
             if os.path.exists(file_path):
                 with open(file_path, 'r') as file:
                     file_content = file.read()
@@ -33,7 +33,7 @@ async def echo_server_proto(scope: Dict, conn: EchoQuicConnection):
 ########################################## Upload ####################################################
         elif dgram_in.mtype == pdu.MSG_TYPE_DATA:
 
-            save_folder = '/Users/subhratosom/Desktop/python/serverdata' #Change it to '/yourfilepath/serverdata'
+            save_folder = '/yourfilepath/serverdata' #Change it to '/yourfilepath/serverdata'
             file_path = os.path.join(save_folder, 'received_file.txt')
             with open(file_path, 'w') as file:
                 file.write(dgram_in.msg)
@@ -47,7 +47,7 @@ async def echo_server_proto(scope: Dict, conn: EchoQuicConnection):
 ########################################## List Directory ###############################################
         elif dgram_in.mtype == pdu.MSG_TYPE_DIR_LIST:
 
-            directory_path = '/Users/subhratosom/Desktop/python/serverdata' #Change it to '/yourfilepath/serverdata'
+            directory_path = '/yourfilepath/serverdata' #Change it to '/yourfilepath/serverdata'
             try:
                 files = os.listdir(directory_path)
                 dgram_out = pdu.Datagram(pdu.MSG_TYPE_DIR_LIST, files)
@@ -67,8 +67,8 @@ async def echo_server_proto(scope: Dict, conn: EchoQuicConnection):
         elif dgram_in.mtype == pdu.MSG_TYPE_RENAME:
 
             old_file_name, new_file_name = dgram_in.msg.split(';')
-            old_file_path = os.path.join('/Users/subhratosom/Desktop/python/serverdata', old_file_name) #Change it to '/yourfilepath/serverdata'
-            new_file_path = os.path.join('/Users/subhratosom/Desktop/python/serverdata', new_file_name) #Change it to '/yourfilepath/serverdata'
+            old_file_path = os.path.join('/yourfilepath/serverdata', old_file_name) #Change it to '/yourfilepath/serverdata'
+            new_file_path = os.path.join('/yourfilepath/serverdata', new_file_name) #Change it to '/yourfilepath/serverdata'
             try:
                 os.rename(old_file_path, new_file_path)
                 response_msg = f"File renamed successfully from {old_file_name} to {new_file_name}"
@@ -88,7 +88,7 @@ async def echo_server_proto(scope: Dict, conn: EchoQuicConnection):
 ########################################## Delete ####################################################
         elif dgram_in.mtype == pdu.MSG_TYPE_DELETE:
             # Delete
-            file_path = os.path.join('/Users/subhratosom/Desktop/python/serverdata', dgram_in.msg) #Change it to '/yourfilepath/serverdata'
+            file_path = os.path.join('/yourfilepath/serverdata', dgram_in.msg) #Change it to '/yourfilepath/serverdata'
             try:
                 os.remove(file_path)
                 response_msg = f"File {dgram_in.msg} deleted successfully"
