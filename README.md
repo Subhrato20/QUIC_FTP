@@ -10,7 +10,7 @@ This application demonstrates a client-server interaction using the QUIC protoco
 
 1. Clone the repository:
    ```bash
-   git clone 
+   git clone https://github.com/Subhrato20/QUIC_FTP.git
    ```
 2. Install required Python libraries:
    ```
