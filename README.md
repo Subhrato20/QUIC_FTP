@@ -30,9 +30,6 @@ This application demonstrates a client-server interaction using the QUIC protoco
 
 To run the file you have to add an absolute directory to serverdata (you have to make changes in the echo_server.py, I have highlighted it with comments).
 
-# Demo Video
-The link to demo is https://drive.google.com/file/d/1ZIrFIUT5J6Jb2tg0LZX1kJLPWP5CMkNW/view?usp=sharing
-
 
 ## Running the Server
 
